@@ -28,12 +28,14 @@ public class FlightTest {
 
         assertEquals(
                 Arrays.asList(ticket1, ticket2),
-                flight.getTickets()
+                flight.getTickets(),
+                "Tickets for flight"
         );
 
         assertEquals(
                 new BigDecimal("400.00"),
-                flight.getRevenue()
+                flight.getRevenue(),
+                "Flight revenue"
         );
     }
 }

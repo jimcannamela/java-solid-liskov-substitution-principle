@@ -36,4 +36,9 @@ public class Ticket {
         result = 31 * result + (price != null ? price.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Ticket{for:%s, price:%s}", passenger, price);
+    }
 }

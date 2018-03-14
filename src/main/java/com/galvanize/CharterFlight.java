@@ -13,7 +13,7 @@ public class CharterFlight extends Flight {
 
     public void addTicket(Ticket ticket) {
         if (totalWeight() + ticket.getPassenger().getWeight() <= weightLimit) {
-            tickets.add(ticket);
+            super.addTicket(ticket);
         }
     }
 

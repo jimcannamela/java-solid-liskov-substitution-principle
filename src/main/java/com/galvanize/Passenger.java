@@ -56,4 +56,9 @@ public class Passenger {
         result = 31 * result + weight;
         return result;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s (%s)", name, ageGroup);
+    }
 }

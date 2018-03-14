@@ -28,12 +28,14 @@ public class CharterFlightTest {
 
         assertEquals(
                 Arrays.asList(ticket1, ticket2),
-                flight.getTickets()
+                flight.getTickets(),
+                "Tickets for flight"
         );
 
         assertEquals(
                 new BigDecimal("400.00"),
-                flight.getRevenue()
+                flight.getRevenue(),
+                "Flight revenue"
         );
     }
 
@@ -55,12 +57,36 @@ public class CharterFlightTest {
 
         assertEquals(
                 Arrays.asList(ticket1),
-                flight.getTickets()
+                flight.getTickets(),
+                "Tickets for flight"
         );
 
         assertEquals(
                 new BigDecimal("210.00"),
-                flight.getRevenue()
+                flight.getRevenue(),
+                "Flight revenue"
+        );
+    }
+
+    @Test
+    public void charterFlightsChecksCapacity() {
+        Ticket ticket1 = new Ticket(new Passenger("Aaron", ADULT, 150), new BigDecimal("210.00"));
+        Ticket ticket2 = new Ticket(new Passenger("Theodosia", ADULT, 150), new BigDecimal("190.00"));
+
+        CharterFlight flight = new CharterFlight("DEN", "LGA", 1, 300);
+        flight.addTicket(ticket1);
+        flight.addTicket(ticket2);
+
+        assertEquals(
+                Arrays.asList(ticket1),
+                flight.getTickets(),
+                "Tickets for flight"
+        );
+
+        assertEquals(
+                new BigDecimal("210.00"),
+                flight.getRevenue(),
+                "Flight revenue"
         );
     }
 }
