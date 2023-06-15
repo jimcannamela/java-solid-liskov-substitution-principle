@@ -10,12 +10,14 @@ public class Flight {
     private String departingAirport;
     private String arrivingAirport;
     private int capacity;
+    private int weightLimit;
     protected ArrayList<Ticket> tickets = new ArrayList<>();
 
-    public Flight(String departingAirport, String arrivingAirport, int capacity) {
+    public Flight(String departingAirport, String arrivingAirport, int capacity, int weightLimit) {
         this.departingAirport = departingAirport;
         this.arrivingAirport = arrivingAirport;
         this.capacity = capacity;
+        this.weightLimit = weightLimit;
     }
 
     public String getDepartingAirport() {
@@ -25,13 +27,16 @@ public class Flight {
     public String getArrivingAirport() {
         return arrivingAirport;
     }
+    public int getWeightLimit() {
+        return weightLimit;
+    }
 
     public List<Ticket> getTickets() {
         return tickets;
     }
 
     public void addTicket(Ticket ticket) {
-        if (tickets.size() < getCapacity()) {
+        if (tickets.size() < getCapacity() && (tickets.stream().map(Ticket::getPassenger).mapToInt(Passenger::getWeight).sum() + ticket.getPassenger().getWeight() <= weightLimit)) {
             tickets.add(ticket);
         }
     }
